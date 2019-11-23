@@ -1,4 +1,5 @@
 import React from 'react';
+import './socket';
 import './App.css';
 import Menu from "./components/menu/Menu";
 import styled from 'styled-components';
@@ -8,6 +9,7 @@ import { createStore } from 'redux';
 import appReducers from './reducers';
 import {LoadingIndicator} from "./components/helpers";
 import Content from "./components/content/Content";
+
 const store = createStore(appReducers);
 
 const MainWrapper = styled.div`
