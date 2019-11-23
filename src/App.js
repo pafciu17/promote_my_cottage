@@ -1,14 +1,13 @@
 import React from 'react';
 import './App.css';
-import Map from './components/content/Map';
 import Menu from "./components/menu/Menu";
 import styled from 'styled-components';
-import { LinearProgress } from '@material-ui/core';
 import 'typeface-roboto';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import appReducers from './reducers';
 import {LoadingIndicator} from "./components/helpers";
+import Content from "./components/content/Content";
 const store = createStore(appReducers);
 
 const MainWrapper = styled.div`
@@ -34,7 +33,7 @@ const App = () =>
         <LoadingIndicator/>
       </MenuWrapper>
       <MapWrapper>
-        <Map />
+        <Content />
       </MapWrapper>
     </MainWrapper>
   </div>;

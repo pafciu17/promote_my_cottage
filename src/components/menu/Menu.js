@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Router, Route, Switch } from 'react-router-dom'
-import SelectCottageLocation from "./SelectCottageLocation";
 import history from '../../history';
+import SelectCottageLocation from "./SelectCottageLocation";
 
 const MenuWrapper = styled.div`
   width: 100%;

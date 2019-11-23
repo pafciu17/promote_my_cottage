@@ -15,7 +15,7 @@ const MapContainer = styled.div`
   }
 `;
 
-const Map = ({ coordinates, zoom, onMapLocationUpdate }) => {
+const SelectCottageLocationMap = ({ coordinates, zoom, onMapLocationUpdate }) => {
   const position = [65, 26]; // move it somewhere else
   const mapRef = useRef();
 
@@ -60,4 +60,4 @@ export default connect(
   (dispatch) => ({
     onMapLocationUpdate: (mapData) => dispatch(setMapLocation(mapData))
   })
-)(Map);
+)(SelectCottageLocationMap);
