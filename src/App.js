@@ -1,16 +1,17 @@
 import React from 'react';
-import './socket';
 import './App.css';
 import Menu from "./components/menu/Menu";
 import styled from 'styled-components';
 import 'typeface-roboto';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import appReducers from './reducers';
 import {LoadingIndicator} from "./components/helpers";
 import Content from "./components/content/Content";
+import SocketWrapper from "./SocketWrapper";
 
-const store = createStore(appReducers);
+const store = createStore(appReducers, applyMiddleware(thunk));
 
 const MainWrapper = styled.div`
   height: 100%;
@@ -38,6 +39,7 @@ const App = () =>
         <Content />
       </MapWrapper>
     </MainWrapper>
+    <SocketWrapper/>
   </div>;
 
 function Root() {

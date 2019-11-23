@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux'
 import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
-import {confirmMapLocation, setLoadingStatus} from "../../actions";
+import {confirmMapLocation} from "../../actions";
+
 
 const SelectMapLocationWrapper = styled.div`
   width: 100%;
@@ -25,7 +26,6 @@ export default connect(
       onAcceptCottageLocation: () => {
         // some more handling ?
         dispatch(confirmMapLocation(mapLocation));
-        dispatch(setLoadingStatus(true));
         // history.push('/map2');
       }
     };

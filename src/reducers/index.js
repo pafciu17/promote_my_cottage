@@ -3,8 +3,8 @@ import {SET_MAP_LOCATION} from "../actions/";
 import {SET_LOADING_STATUS} from "../actions";
 
 const initialState = {
-  coordinates: [64, 24],
-  zoom: 5
+  coordinates: [63.140359406342, 29.830284118652347],
+  zoom: 6
 }
 
 function mapLocation(state = initialState, { type, mapLocation }) {

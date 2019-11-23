@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import "proj4leaflet";
 import { setMapLocation } from "../../actions";
 import {boundsToArray, latLngToArray} from "../../utils";
+import L from 'leaflet';
 
 const MapContainer = styled.div`
   width: 100%;
@@ -16,7 +17,7 @@ const MapContainer = styled.div`
 `;
 
 const SelectCottageLocationMap = ({ coordinates, zoom, onMapLocationUpdate }) => {
-  const position = [65, 26]; // move it somewhere else
+  const position = [63.140359406342, 29.830284118652347]; // move it somewhere else
   const mapRef = useRef();
 
   return <MapContainer>
@@ -37,6 +38,11 @@ const SelectCottageLocationMap = ({ coordinates, zoom, onMapLocationUpdate }) =>
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
       <Marker
+        icon={L.icon({
+          iconUrl: 'cottage.png',
+          iconSize:     [32, 32],
+          iconAnchor:   [16, 32]
+        })}
         draggable={true}
         onDragend={(event) => {
           onMapLocationUpdate({
@@ -47,9 +53,6 @@ const SelectCottageLocationMap = ({ coordinates, zoom, onMapLocationUpdate }) =>
         }}
         position={coordinates}
        >
-        <Popup minWidth={90}>
-          Test
-        </Popup>
       </Marker>
     </LeafletMap>
   </MapContainer>
