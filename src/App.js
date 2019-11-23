@@ -1,9 +1,15 @@
 import React from 'react';
 import './App.css';
-import Map from './components/Map';
-import ControlBar from "./components/ControlBar";
+import Map from './components/content/Map';
+import Menu from "./components/menu/Menu";
 import styled from 'styled-components';
+import { LinearProgress } from '@material-ui/core';
 import 'typeface-roboto';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import appReducers from './reducers';
+import {LoadingIndicator} from "./components/helpers";
+const store = createStore(appReducers);
 
 const MainWrapper = styled.div`
   height: 100%;
@@ -12,7 +18,7 @@ const MainWrapper = styled.div`
   flex-direction: column;
 `;
 
-const ControlBarWrapper = styled.div`
+const MenuWrapper = styled.div`
   flex: 0;
 `;
 
@@ -20,19 +26,25 @@ const MapWrapper = styled.div`
   flex: 1;
 `;
 
-function App() {
+const App = () =>
+  <div className="App">
+    <MainWrapper>
+      <MenuWrapper>
+        <Menu />
+        <LoadingIndicator/>
+      </MenuWrapper>
+      <MapWrapper>
+        <Map />
+      </MapWrapper>
+    </MainWrapper>
+  </div>;
+
+function Root() {
   return (
-    <div className="App">
-      <MainWrapper>
-        <ControlBarWrapper>
-          <ControlBar />
-        </ControlBarWrapper>
-        <MapWrapper>
-          <Map />
-        </MapWrapper>
-      </MainWrapper>
-    </div>
+    <Provider store={store}>
+      <App />
+    </Provider>
   );
 }
 
-export default App;
+export default Root;
