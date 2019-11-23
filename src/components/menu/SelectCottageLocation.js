@@ -20,13 +20,8 @@ const SelectCottageLocation = ({ onAcceptCottageLocation }) =>
 export default connect(
   (state) => ({ mapLocation: state.mapLocation, mapId: state.mapData.mapId}),
   (dispatch) => ({ dispatch }),
-  ({ mapLocation, mapId }, { dispatch }) => {
-    return {
-      onAcceptCottageLocation: () => {
-        // some more handling ?
-        dispatch(confirmMapLocation(mapLocation, mapId));
-        // history.push('/map2');
-      }
-    };
-  }
-)(SelectCottageLocation);
+  ({ mapLocation, mapId }, { dispatch }) => ({
+    onAcceptCottageLocation: () => {
+      dispatch(confirmMapLocation(mapLocation, mapId));
+    }
+  }))(SelectCottageLocation);

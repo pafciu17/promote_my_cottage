@@ -4,6 +4,7 @@ import history from '../../history'
 import styled from 'styled-components';
 import "proj4leaflet";
 import SelectCottageLocationMap from "./SelectCottageLocationMap";
+import ViewCottageMap from "./ViewCottageMap";
 
 const ContentWrapper = styled.div`
   width: 100%;
@@ -18,7 +19,7 @@ const Content = () =>
   <ContentWrapper>
     <Router history={history}>
       <Switch>
-        <Route path="/map2"><div>No map</div></Route>
+        <Route path="/view"><ViewCottageMap /></Route>
         <Route path="/"><SelectCottageLocationMap /></Route>
       </Switch>
     </Router>

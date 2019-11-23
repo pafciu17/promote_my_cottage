@@ -1,10 +1,9 @@
 import { combineReducers } from 'redux'
-import {SET_MAP_LOCATION, SET_NEW_MAP_DATA} from "../actions/";
-import {SET_LOADING_STATUS} from "../actions";
+import {SET_MAP_LOCATION, SET_NEW_MAP_DATA, PUBLISH_MAP, SET_LOADING_STATUS, VIEW_MAP_UPDATE} from "../actions/";
 
 const initialState = {
-  coordinates: [63.140359406342, 29.830284118652347],
-  zoom: 6
+  coordinates: [62.94017084006814, 27.2635052383311],
+  zoom: 10
 }
 
 function mapLocation(state = initialState, { type, mapLocation }) {
@@ -35,10 +34,37 @@ const mapData = (state = initiaMapData, { type, mapData }) => {
   return state
 }
 
+const initialPublishMap = { isModalOpen: false };
+
+const publishMap = (state = initialPublishMap, { type }) => {
+  switch (type) {
+    case PUBLISH_MAP:
+      return {
+        ...state,
+        isModalOpen: true
+      }
+  };
+  return state;
+};
+
+const initialViewMapData = {};
+
+const viewMapData = (state = initialViewMapData, { type, mapData }) => {
+  switch (type) {
+    case VIEW_MAP_UPDATE:
+      return {
+        ...mapData
+      }
+  }
+  return state;
+};
+
 const appReducers = combineReducers({
   mapLocation,
   mapData,
-  isLoading
+  isLoading,
+  publishMap,
+  viewMapData
 });
 
 export default appReducers

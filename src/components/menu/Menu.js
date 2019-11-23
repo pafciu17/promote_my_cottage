@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Router, Route, Switch } from 'react-router-dom'
 import history from '../../history';
 import SelectCottageLocation from "./SelectCottageLocation";
+import EditMap from "./EditMap";
+import ViewMap from "./ViewMap";
 
 const MenuWrapper = styled.div`
   width: 100%;
@@ -15,7 +17,8 @@ const Menu = () =>
   <MenuWrapper>
     <Router history={history}>
       <Switch>
-        <Route path="/map2">Edit map</Route>
+        <Route path="/view/:mapId"><ViewMap /></Route>
+        <Route path="/edit"><EditMap /></Route>
         <Route path="/"><SelectCottageLocation /></Route>
       </Switch>
     </Router>
