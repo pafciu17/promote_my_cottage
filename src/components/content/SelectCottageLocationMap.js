@@ -40,8 +40,8 @@ const SelectCottageLocationMap = ({ coordinates, zoom, onMapLocationUpdate }) =>
       <Marker
         icon={L.icon({
           iconUrl: 'cottage.png',
-          iconSize:     [32, 32],
-          iconAnchor:   [16, 32]
+          iconSize: [32, 32],
+          iconAnchor: [16, 32]
         })}
         draggable={true}
         onDragend={(event) => {

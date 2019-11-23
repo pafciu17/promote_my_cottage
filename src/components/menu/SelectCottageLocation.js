@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Button from '@material-ui/core/Button';
 import {confirmMapLocation} from "../../actions";
 
-
 const SelectMapLocationWrapper = styled.div`
   width: 100%;
   Button {
@@ -19,13 +18,13 @@ const SelectCottageLocation = ({ onAcceptCottageLocation }) =>
   </SelectMapLocationWrapper>;
 
 export default connect(
-  (state) => ({ mapLocation: state.mapLocation}),
+  (state) => ({ mapLocation: state.mapLocation, mapId: state.mapData.mapId}),
   (dispatch) => ({ dispatch }),
-  ({ mapLocation }, { dispatch }) => {
+  ({ mapLocation, mapId }, { dispatch }) => {
     return {
       onAcceptCottageLocation: () => {
         // some more handling ?
-        dispatch(confirmMapLocation(mapLocation));
+        dispatch(confirmMapLocation(mapLocation, mapId));
         // history.push('/map2');
       }
     };

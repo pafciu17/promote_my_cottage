@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux'
-import {SET_MAP_LOCATION} from "../actions/";
+import {SET_MAP_LOCATION, SET_NEW_MAP_DATA} from "../actions/";
 import {SET_LOADING_STATUS} from "../actions";
 
 const initialState = {
@@ -8,7 +8,7 @@ const initialState = {
 }
 
 function mapLocation(state = initialState, { type, mapLocation }) {
-  switch(type) {
+  switch (type) {
     case SET_MAP_LOCATION:
       return { ...mapLocation }
   }
@@ -25,8 +25,19 @@ const isLoading = (state = initialStateLoadingState, {type, isLoading}) => {
   return state;
 }
 
+const initiaMapData = {};
+
+const mapData = (state = initiaMapData, { type, mapData }) => {
+  switch (type) {
+    case SET_NEW_MAP_DATA:
+      return { ...mapData }
+  }
+  return state
+}
+
 const appReducers = combineReducers({
   mapLocation,
+  mapData,
   isLoading
 });
 
