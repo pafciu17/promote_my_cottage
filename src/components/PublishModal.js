@@ -7,11 +7,18 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import { withRouter } from "react-router";
 import queryString from 'query-string';
 import {connect} from "react-redux";
+import QRCode from 'qrcode.react';
+import styled from 'styled-components';
 
 const getLink = (mapId) => {
   const { protocol, hostname, port } = window.location;
   return `${protocol}//${hostname}:${port}/view/${mapId}`;
 }
+
+const QRCodeWrapper = styled.div`
+  text-align: center;
+  padding: 5px;
+`;
 
 const PublishModal = ({ isModalOpen, location }) => {
   let { mid } = queryString.parse(location.search);
@@ -27,6 +34,9 @@ const PublishModal = ({ isModalOpen, location }) => {
         <DialogContentText id="alert-dialog-description">
           The maps is published and available at <a href={mapLink}>{mapLink}</a>
         </DialogContentText>
+        <QRCodeWrapper>
+          <QRCode value={mapLink} />
+        </QRCodeWrapper>
       </DialogContent>
     </Dialog>
   );
